@@ -1,1 +1,4 @@
-This file caintains all the topics related to BI departemnt
+This file cointains all the topics related to BI department
+
+TSQL
+http://blog.sqlauthority.com/
