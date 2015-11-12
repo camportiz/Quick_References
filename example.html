@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+	  <div>
+	  <select name="figure" id="figure">
+		  <option value="Line">Line</option>
+		  <option value="Circle">Circle</option>
+		  <option value="Circle">Rectangle</option>
+	  </select>
+	  </div>
+    <canvas id="myCanvas" width="600" height="400" style="border:1px solid #000000;"></canvas>
+		<div id="demo"></div>
+    <script>
+		var clicked = 0;
+		var posx = 0;
+		var posy = 0;
+		var posxline = 0;
+		var posyline = 0;		
+		
+      function writeMessage(canvas, message) {
+        var context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.font = '11pt Calibri';
+        context.fillStyle = 'black';
+        context.fillText(message, 10, 25);
+      }
+	  
+      function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+      }
+	  
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+      canvas.addEventListener('mousemove', function(evt) {
+        var mousePos = getMousePos(canvas, evt);
+        var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+        //writeMessage(canvas, message);
+      }, false);
+		
+		function oddOrEven(x) {
+		  return ( x & 1 ) ? "odd" : "even";
+		}
+					  
+		canvas.addEventListener("click", function(e){
+			clicked++;
+			var mousePos = getMousePos(canvas, e);
+			var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y + " Clicked Count:" + clicked;
+			document.getElementById("demo").innerHTML = "";
+		    document.getElementById("demo").innerHTML = message;
+			if(oddOrEven(clicked) == "even")
+			{
+				posx = mousePos.x;
+				posy = mousePos.y;
+				//drawLine(canvas, posx, posy, posxline, posyline);
+				
+				var radio = (posx - posxline);
+				if(radio == 0){
+					var radio = (posy - posyline);
+				}
+				if(radio < 0){
+					var radio = radio * -1;
+				}				
+				
+				//drawCircle(canvas, posxline, posyline, radio);
+				drawRectangle(canvas, radio, radio, posxline, posyline);
+			} else {
+				posxline = mousePos.x;
+				posyline = mousePos.y;
+			}
+		});
+		
+		function drawLine(canvas, posx, posy, posxline, posyline) {
+			context.moveTo(posxline, posyline);
+			context.lineTo(posx, posy);
+			context.stroke();			
+		}	
+		
+		function drawCircle(canvas, posx, posy, radio)
+		{
+			context.beginPath();
+			context.arc(posx, posy, radio, 0 ,2*Math.PI);
+			context.stroke();			
+		}
+		
+		function drawRectangle(canvas, posx, posy, posxline, posyline)
+		{
+			context.rect(posxline, posyline, posx, posy);
+			context.stroke();			
+		}
+	  
+    </script>
+  </body>
+</html>
