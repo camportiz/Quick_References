@@ -1,0 +1,25 @@
+Práctica con HTML5 - Javascript 
+ Tecnología a utilizar
+-	Visual Studio 2013
+-	Javascript
+-	CSS
+
+1.	Se deberá permitir dibujar en el canvas utilizando el mouse las siguientes figuras:
+-	Cuadrado o rectángulo
+-	Círculo
+-	Línea 
+
+ 
+Para ello habrá 3 botones para poder elegir la figura a dibujar. La figura se deberá dibujar utilizando el mouse de acuerdo a la figura seleccionada.
+
+2. Se deberá poder seleccionar la figura y moverla con el mouse en mouse down, mouse move y fijarla en mouse up. 
+
+3. La página deberá tener un título
+
+4. Deberá haber 4 botones extras en la página 
+-	Botón 1 para eliminar la figura ‘seleccionada’
+-	Botón 2 para aplicar Estilo 1 a la página
+-	Botón 3 para aplicar Estilo 2 a la página
+-	Botón 4 agregará una figura (rectángulo o círculo)
+
+ Los Estilos 1 y 2 pueden ser definidos de manera abierta pero deberá cambiar los estilos al fondo de la página, botones y título.
